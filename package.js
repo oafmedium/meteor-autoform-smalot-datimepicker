@@ -1,7 +1,7 @@
 Package.describe({
   name: 'oaf:autoform-smalot-datetimepicker',
   summary: 'Custom smalot datetimepicker input type for AutoForm',
-  version: '0.1.0',
+  version: '0.1.1',
   git: 'https://github.com/oafmedium/meteor-autoform-smalot-datimepicker.git'
 });
 

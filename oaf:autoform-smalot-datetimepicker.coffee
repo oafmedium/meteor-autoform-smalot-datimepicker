@@ -50,11 +50,20 @@ Template.OafDatetimepicker.rendered = ->
   dtp = $div.datetimepicker opts
   # set and reactively update values
 
-  dtp.on 'changeDate', (event) ->
-    $input.val moment(event.date.valueOf()).toDate()
-  dtp.on 'changeDay', (event) ->
-    $input.val moment(event.date.valueOf()).startOf('day').toDate()
+  startOf = (date) ->
+    date.setHours 0,0,0,0
+    date
+  endOf = (date) ->
+    date.setHours 23,59,59,999
+    date
 
+  dtp.on 'changeDate', (event) ->
+    $input.val new Date event.date.valueOf()
+    $input.trigger 'change'
+    $input.trigger 'changeDate'
+  dtp.on 'changeDay', (event) ->
+    $input.val startOf new Date event.date.valueOf()
+    $input.trigger 'change'
   @autorun ->
     data = Template.currentData()
 
